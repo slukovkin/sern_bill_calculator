@@ -1,9 +1,8 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
-const { db_init } = require("./db/db_init.js");
-// const { SetupBase } = require("./models/setup.model.js");
-// const { ElectroCounter } = require("./models/electro.model.js");
+const { db_init, sequelize } = require("./db/db_init.js");
 const Database = require("./models/database.model.js");
+const Setup = require("./controllers/setup.controller.js");
 
 const app = express();
 app.use(express.json());
@@ -13,11 +12,11 @@ app.get("/", (req, res) => {
   res.send("Welcome to Express");
 });
 
+app.get('/api', Setup.getPriceFromDatabase)
+app.post("/api/setup", Setup.addPriceToDatabase);
+app.post('/api/id', Setup.getLastPriceFromDatabase)
+
 db_init();
-Database.SetupBase.sync();
-Database.ElectroCounter.sync();
-Database.WaterCounter.sync();
-Database.GazCounter.sync();
 
 app.listen(PORT, () => {
   try {

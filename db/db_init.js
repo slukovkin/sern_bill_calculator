@@ -8,6 +8,7 @@ const sequelize = new Sequelize({
 async function db_init() {
   try {
     await sequelize.authenticate();
+    await sequelize.sync();
     console.log("Database connecting OK");
   } catch (e) {
     console.log("Database connecting False");
