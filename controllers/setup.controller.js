@@ -11,15 +11,16 @@ const addPriceToDatabase = async (req, res) => {
       });
     }
     await setup.save();
+    res.json({
+      message: "Данные успешно сохранены",
+    });
+  } catch (err) {
     res.json(
       {
-        message: "Данные успешно сохранены",
+        message: "Ошибка запроса",
       },
+      err
     );
-  } catch (err) {
-    res.json({
-      message: "Ошибка запроса",
-    }, err);
   }
 };
 const getPriceFromDatabase = async (req, res) => {

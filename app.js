@@ -6,20 +6,15 @@ const {
   getPriceFromDatabase,
   getLastPriceFromDatabase,
 } = require("./controllers/setup.controller.js");
+
 const {
   addCounterToDatabase,
   getAllData,
 } = require("./controllers/electro.controller.js");
-const {
-  SetupBase,
-  ElectroCounter,
-  WaterCounter,
-  GazCounter,
-} = require("./models/db_modls.js");
 
 const app = express();
 app.use(express.json());
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 
 app.get("/api", getPriceFromDatabase);
 app.post("/api/setup", addPriceToDatabase);

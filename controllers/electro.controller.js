@@ -1,3 +1,4 @@
+const { sequelize } = require("../db/db_init.js");
 const { ElectroCounter } = require("../models/db_modls.js");
 
 // запись предыдущего и текущего счетчиков в базу
@@ -34,7 +35,9 @@ const addCounterToDatabase = async (req, res) => {
 
 const getAllData = async (req, res) => {
   try {
-    const data = await ElectroCounter.findAll();
+    const data = await ElectroCounter.findOne({
+      order: sequelize.fn('max', sequelize.col('id'))
+    });
     return res.json(data);
   } catch (err) {
     res.json(
