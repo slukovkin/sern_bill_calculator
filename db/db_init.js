@@ -1,13 +1,13 @@
 const { Sequelize } = require("sequelize");
 
-const db = new Sequelize({
+const sequelize = new Sequelize({
   dialect: "sqlite",
   storage: "./db_app.sqlite",
 });
 
 async function db_init() {
   try {
-    await db.authenticate();
+    await sequelize.authenticate();
     console.log("Database connecting OK");
   } catch (e) {
     console.log("Database connecting False");
@@ -15,4 +15,4 @@ async function db_init() {
   }
 }
 
-module.exports = { db_init };
+module.exports = { db_init, sequelize };
