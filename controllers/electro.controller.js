@@ -36,15 +36,13 @@ const addCounterToDatabase = async (req, res) => {
 const getAllData = async (req, res) => {
   try {
     const data = await ElectroCounter.findOne({
-      order: sequelize.fn('max', sequelize.col('id'))
+      order: sequelize.fn("max", sequelize.col("id")),
     });
     return res.json(data);
   } catch (err) {
-    res.json(
-      {
-        message: "Ошибка запроса данных",
-      },
-    );
+    res.json({
+      message: "Ошибка запроса данных",
+    });
   }
 };
 

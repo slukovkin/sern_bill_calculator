@@ -1,27 +1,12 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
+const router = require("./router/router.js");
 const { db_init, sequelize } = require("./db/db_init.js");
-const {
-  addPriceToDatabase,
-  getPriceFromDatabase,
-  getLastPriceFromDatabase,
-} = require("./controllers/setup.controller.js");
-
-const {
-  addCounterToDatabase,
-  getAllData,
-} = require("./controllers/electro.controller.js");
 
 const app = express();
 app.use(express.json());
+app.use("/api", router);
 const PORT = process.env.PORT || 5000;
-
-app.get("/api", getPriceFromDatabase);
-app.post("/api/setup", addPriceToDatabase);
-app.post("/api/id", getLastPriceFromDatabase);
-
-app.post("/api/electro/add", addCounterToDatabase);
-app.post("/api/electro", getAllData);
 
 db_init();
 
