@@ -7,6 +7,10 @@ const {
   getLastPriceFromDatabase,
 } = require("./controllers/setup.controller.js");
 const {
+  addCounterToDatabase,
+  getAllData,
+} = require("./controllers/electro.controller.js");
+const {
   SetupBase,
   ElectroCounter,
   WaterCounter,
@@ -17,13 +21,12 @@ const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 4000;
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Express");
-});
-
 app.get("/api", getPriceFromDatabase);
 app.post("/api/setup", addPriceToDatabase);
 app.post("/api/id", getLastPriceFromDatabase);
+
+app.post("/api/electro/add", addCounterToDatabase);
+app.post("/api/electro", getAllData);
 
 db_init();
 
