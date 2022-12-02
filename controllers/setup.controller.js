@@ -1,5 +1,6 @@
 const express = require("express");
-const { SetupBase } = require("../models/db_modls.js");
+const { SetupBase } = require("../models/db_modls");
+const { searchMaxId } = require("../utils/utilites");
 
 const addPriceToDatabase = async (req, res) => {
   try {
@@ -36,16 +37,17 @@ const getPriceFromDatabase = async (req, res) => {
     );
   }
 };
-const getLastPriceFromDatabase = async (req, res) => {
+const getLastSettingFromDatabase = async (req, res) => {
   try {
-    const id = req.body;
-    const price = await SetupBase.findOne({ where: id });
-    if (!price) {
+    const data = await SetupBase.findAll();
+    const id = searchMaxId(data);
+    const lastSetting = await SetupBase.findOne({ where: id });
+    if (!lastSetting) {
       return res.json({
         message: "Данные не найдены",
       });
     }
-    res.json(price);
+    res.json(lastSetting);
   } catch (err) {
     res.json(
       {
@@ -59,5 +61,5 @@ const getLastPriceFromDatabase = async (req, res) => {
 module.exports = {
   addPriceToDatabase,
   getPriceFromDatabase,
-  getLastPriceFromDatabase,
+  getLastSettingFromDatabase,
 };

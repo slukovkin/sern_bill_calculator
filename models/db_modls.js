@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const { sequelize } = require("../db/db_init");
 
 const SetupBase = sequelize.define(
-  "SetupBase",
+  "setup",
   {
     eprice: {
       type: DataTypes.FLOAT,
@@ -19,13 +19,13 @@ const SetupBase = sequelize.define(
   },
   {
     timestamps: true,
-    modelName: "SetupBase",
+    modelName: "setup",
     freezeTableName: true,
   }
 );
 
 const ElectroCounter = sequelize.define(
-  "Electro",
+  "electro",
   {
     counter_prev: {
       type: DataTypes.INTEGER,
@@ -42,13 +42,13 @@ const ElectroCounter = sequelize.define(
   },
   {
     timestamps: true,
-    modelName: "Electro",
+    modelName: "electro",
     freezeTableName: true,
   }
 );
 
 const WaterCounter = sequelize.define(
-  "Water",
+  "water",
   {
     counter_prev: {
       type: DataTypes.INTEGER,
@@ -65,13 +65,13 @@ const WaterCounter = sequelize.define(
   },
   {
     timestamps: true,
-    modelName: "Water",
+    modelName: "water",
     freezeTableName: true,
   }
 );
 
 const GazCounter = sequelize.define(
-  "Gaz",
+  "gaz",
   {
     counter_prev: {
       type: DataTypes.INTEGER,
@@ -88,7 +88,7 @@ const GazCounter = sequelize.define(
   },
   {
     timestamps: true,
-    modelName: "Gaz",
+    modelName: "gaz",
     freezeTableName: true,
   }
 );

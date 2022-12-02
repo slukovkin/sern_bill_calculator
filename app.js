@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
 const router = require("./router/router.js");
-const { db_init, sequelize } = require("./db/db_init.js");
+const { db_init } = require("./db/db_init.js");
 
 const app = express();
 app.use(express.json());
