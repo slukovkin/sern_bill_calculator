@@ -1,0 +1,23 @@
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background: #000;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 100vw;
+  height: 80px;
+}
+
+li {
+  display: inline;
+  padding: 10px;
+}
+
+a {
+  color: teal;
+  text-decoration: none; 
+  list-style: none;
+}

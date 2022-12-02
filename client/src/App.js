@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
+import Report from "./components/Report/Report";
+import Counter from "./components/Counter/Counter";
+import Settings from "./components/Settings/Settings";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <div className='App'>
+        <Routes>
+          <Route path='/' element={<Report />} />
+          <Route path='/counter_el' element={<Counter />} />
+          <Route path='/settings' element={<Settings url='http://localhost:3003/api/setup'/>} />
+        </Routes>
+      </div>
+    </>
   );
 }
 

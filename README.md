@@ -1,3 +1,3 @@
 # Учебный проект
 
-# Sqlit3, Express, React, NodeJs
+# Sqlite3, Express, React, NodeJs
