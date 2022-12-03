@@ -27,12 +27,12 @@ router.post("/setup", addPriceToDatabase);
 router.post("/setting", getLastSettingFromDatabase);
 
 router.post("/electro/add", addElectroCounterToDatabase);
-router.get("/electro/lastcounter", getElectroLastCounterData);
+router.post("/electro/lastcounter", getElectroLastCounterData);
 
 router.post("/water/add", addWaterCounterToDatabase);
-router.get("/water/lastcounter", getWaterLastCounterData);
+router.post("/water/lastcounter", getWaterLastCounterData);
 
 router.post("/gaz/add", addGazCounterToDatabase);
-router.get("/gaz/lastcounter", getGazLastCounterData);
+router.post("/gaz/lastcounter", getGazLastCounterData);
 
 module.exports = router;

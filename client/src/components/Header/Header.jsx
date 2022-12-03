@@ -15,10 +15,10 @@ function Header() {
             <NavLink to='counter_el'>Электроснабжение</NavLink>
           </li>
           <li>
-            <NavLink to=''>Водоснабжение</NavLink>
+            <NavLink to='counter_w'>Водоснабжение</NavLink>
           </li>
           <li>
-            <NavLink to=''>Газоснабжение</NavLink>
+            <NavLink to='counter_g'>Газоснабжение</NavLink>
           </li>
           <li>
             <NavLink to='settings'>Настройки</NavLink>
