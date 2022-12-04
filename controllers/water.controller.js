@@ -7,11 +7,11 @@ import { searchMaxId } from "../utils/utilites.js";
 
 export const addWaterCounterToDatabase = async (req, res) => {
   try {
-    const { counter_prev, counter_current, sum } = req.body;
+    const { counter_prev, counter_current, payment } = req.body;
     const data = await WaterCounter.build({
       counter_prev,
       counter_current,
-      sum,
+      payment,
     });
 
     if (!data) {

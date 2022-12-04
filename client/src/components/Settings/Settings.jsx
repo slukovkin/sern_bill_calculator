@@ -3,11 +3,10 @@ import axios from "axios";
 import "./Settings.module.css";
 
 function Settings(props) {
-  let [eprice, setEprice] = useState("");
-  let [wprice, setWprice] = useState("");
-  let [gprice, setGprice] = useState(getSettings);
-  // let [out, setOut] = useState();
-  let [data, setData] = useState("");
+  const [eprice, setEprice] = useState(0);
+  const [wprice, setWprice] = useState(0);
+  const [gprice, setGprice] = useState(0);
+  const [data, setData] = useState("");
 
   function saveSettings() {
     axios({
@@ -49,10 +48,9 @@ function Settings(props) {
   }
 
   useEffect(() => {
-    return () => {
-      document.title = props.title;
-    };
-  });
+    getSettings();
+    document.title = props.title;
+  }, [props.title]);
 
   return (
     <>

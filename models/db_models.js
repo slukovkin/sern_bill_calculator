@@ -27,15 +27,15 @@ export const SetupBase = sequelize.define(
 export const ElectroCounter = sequelize.define(
   "electro",
   {
-    counter_prev: {
+    counterPrev: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    counter_current: {
+    counterCurr: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    sum: {
+    payment: {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
@@ -58,7 +58,7 @@ export const WaterCounter = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    sum: {
+    payment: {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
@@ -81,7 +81,7 @@ export const GazCounter = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    sum: {
+    payment: {
       type: DataTypes.FLOAT,
       allowNull: true,
     },

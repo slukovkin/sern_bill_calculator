@@ -12,7 +12,7 @@ function App() {
       <Header />
       <div className='App'>
         <Routes>
-          <Route path='/' element={<Report />} />
+          <Route path='/' element={<Report title='Отчет по платежам'/>} />
           <Route
             path='/counter_el'
             element={

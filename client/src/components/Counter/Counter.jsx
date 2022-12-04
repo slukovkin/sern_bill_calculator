@@ -2,10 +2,29 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Counter(props) {
-  let [counterPrev, setCounterPrev] = useState("");
-  let [counterCurr, setCounterCurr] = useState("");
-  let [price, setPrice] = useState(getSettings);
-  let [payment, setPayment] = useState("");
+  const [counterPrev, setCounterPrev] = useState(0);
+  const [counterCurr, setCounterCurr] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [payment, setPayment] = useState(0);
+
+  function saveData() {
+    axios({
+      method: "post",
+      url: props.setUrl,
+      data: [
+        counterPrev,
+        counterCurr,
+        payment,
+        
+      ],
+    })
+      .then((res) => {
+        console.log("OK");
+      })
+      .catch((res) => {
+        console.log("False");
+      });
+  }
 
   function getSettings() {
     axios({
@@ -22,43 +41,26 @@ function Counter(props) {
       url: props.getCounter,
     }).then((res) => {
       let data = Object.values(res.data);
-      setCounterPrev(data[1]);
-      setPayment(data[3]);
+      setCounterPrev(data[2]);
     });
   }
-  function saveSettings() {
-    axios({
-      method: "post",
-      url: props.setUrl,
-      data: {
-        counterPrev,
-        counterCurr,
-        payment,
-      },
-    })
-      .then((res) => {
-        console.log("OK");
-      })
-      .catch((res) => {
-        console.log("False");
-      });
-  }
-
-  useEffect(() => {
-    getCounterPrev();
-    return () => {
-      document.title = props.title;
-    };
-  });
 
   function sendForm(e) {
     e.preventDefault();
-    setPayment(((counterCurr - counterPrev) * price).toFixed(2));
-    saveSettings();
+    
+    setPayment(+((counterCurr - counterPrev) * price).toFixed(2));
+    // return console.log(counterCurr, counterPrev, price, payment);
+    saveData();
     setCounterPrev("");
     setCounterCurr("");
-    setPayment("");
+    
   }
+
+  useEffect(() => {
+    getSettings();
+    getCounterPrev();
+    document.title = props.title;
+  });
 
   return (
     <>
