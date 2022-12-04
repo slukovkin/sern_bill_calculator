@@ -7,15 +7,26 @@ function Counter(props) {
   let [price, setPrice] = useState(getSettings);
   let [payment, setPayment] = useState("");
 
-  useEffect(() => {
-    getCounterPrev();
-    return () => {
-      document.title = props.title;
-    };
-  });
-
+  function getSettings() {
+    axios({
+      method: "post",
+      url: props.getUrl,
+    }).then((res) => {
+      let data = Object.values(res.data);
+      setPrice(data[props.idx]);
+    });
+  }
+  function getCounterPrev() {
+    axios({
+      method: "post",
+      url: props.getCounter,
+    }).then((res) => {
+      let data = Object.values(res.data);
+      setCounterPrev(data[1]);
+      setPayment(data[3]);
+    });
+  }
   function saveSettings() {
-    // return console.log(counterPrev, counterCurr, payment, price);
     axios({
       method: "post",
       url: props.setUrl,
@@ -33,30 +44,16 @@ function Counter(props) {
       });
   }
 
-  function getSettings() {
-    axios({
-      method: "post",
-      url: props.getUrl,
-    }).then((res) => {
-      let data = Object.values(res.data);
-      setPrice(data[props.idx]);
-    });
-  }
+  useEffect(() => {
+    getCounterPrev();
+    return () => {
+      document.title = props.title;
+    };
+  });
 
-  function getCounterPrev() {
-    axios({
-      method: "post",
-      url: props.getCounter,
-    }).then((res) => {
-      let data = Object.values(res.data);
-      setCounterPrev(data[1]);
-      setPayment(data[3]);
-    });
-  }
   function sendForm(e) {
     e.preventDefault();
     setPayment(+((counterCurr - counterPrev) * price).toFixed(2));
-    // return console.log(counterPrev, counterCurr, payment, price);
     saveSettings();
     setCounterPrev("");
     setCounterCurr("");
