@@ -53,7 +53,7 @@ function Counter(props) {
 
   function sendForm(e) {
     e.preventDefault();
-    setPayment(+((counterCurr - counterPrev) * price).toFixed(2));
+    setPayment(((counterCurr - counterPrev) * price).toFixed(2));
     saveSettings();
     setCounterPrev("");
     setCounterCurr("");
