@@ -1,6 +1,6 @@
 //поиск по наибольшему id * запрос sequelize почему-то не рвботает!!!
 
-function searchMaxId(data) {
+export function searchMaxId(data) {
   const result = [];
   data.reduce((acc, item) => {
     result.push(item.id);
@@ -10,7 +10,3 @@ function searchMaxId(data) {
 }
 
 // -----------------------------
-
-module.exports = {
-  searchMaxId,
-};

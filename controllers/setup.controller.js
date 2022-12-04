@@ -1,8 +1,7 @@
-const express = require("express");
-const { SetupBase } = require("../models/db_modls");
-const { searchMaxId } = require("../utils/utilites");
+import { SetupBase } from "../models/db_models.js";
+import { searchMaxId } from "../utils/utilites.js";
 
-const addPriceToDatabase = async (req, res) => {
+export const addPriceToDatabase = async (req, res) => {
   try {
     const { eprice, wprice, gprice } = req.body;
     const setup = await SetupBase.build({ eprice, wprice, gprice });
@@ -24,7 +23,7 @@ const addPriceToDatabase = async (req, res) => {
     );
   }
 };
-const getPriceFromDatabase = async (req, res) => {
+export const getPriceFromDatabase = async (req, res) => {
   try {
     const data = await SetupBase.findAll();
     res.json(data);
@@ -37,7 +36,7 @@ const getPriceFromDatabase = async (req, res) => {
     );
   }
 };
-const getLastSettingFromDatabase = async (req, res) => {
+export const getLastSettingFromDatabase = async (req, res) => {
   try {
     const data = await SetupBase.findAll();
     const id = searchMaxId(data);
@@ -56,10 +55,4 @@ const getLastSettingFromDatabase = async (req, res) => {
       err
     );
   }
-};
-
-module.exports = {
-  addPriceToDatabase,
-  getPriceFromDatabase,
-  getLastSettingFromDatabase,
 };

@@ -1,11 +1,11 @@
-const { sequelize } = require("../db/db_init.js");
-const { GazCounter } = require("../models/db_modls.js");
-const { searchMaxId } = require("../utils/utilites.js");
+import { sequelize } from "../db/db_init.js";
+import { GazCounter } from "../models/db_models.js";
+import { searchMaxId } from "../utils/utilites.js";
 
 // запись предыдущего и текущего счетчиков в базу
 // запись суммы оплаты
 
-const addGazCounterToDatabase = async (req, res) => {
+export const addGazCounterToDatabase = async (req, res) => {
   try {
     const { counter_prev, counter_current, sum } = req.body;
     const data = await GazCounter.build({
@@ -34,7 +34,7 @@ const addGazCounterToDatabase = async (req, res) => {
   }
 };
 
-const getGazLastCounterData = async (req, res) => {
+export const getGazLastCounterData = async (req, res) => {
   try {
     // const data = await ElectroCounter.findOne({
     //   order: sequelize.fn("max", sequelize.col("id")),
@@ -53,9 +53,4 @@ const getGazLastCounterData = async (req, res) => {
       message: "Ошибка запроса данных",
     });
   }
-};
-
-module.exports = {
-  addGazCounterToDatabase,
-  getGazLastCounterData,
 };

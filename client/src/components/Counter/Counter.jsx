@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Counter(props) {
-  let [counterPrev, setCounterPrev] = useState(getCounterPrev);
+  let [counterPrev, setCounterPrev] = useState("");
   let [counterCurr, setCounterCurr] = useState("");
   let [price, setPrice] = useState(getSettings);
   let [payment, setPayment] = useState("");

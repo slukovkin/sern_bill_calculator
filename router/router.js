@@ -1,38 +1,22 @@
-const Router = require("express");
-const {
-  addPriceToDatabase,
-  getPriceFromDatabase,
-  getLastSettingFromDatabase,
-} = require("../controllers/setup.controller.js");
-
-const {
-  addElectroCounterToDatabase,
-  getElectroLastCounterData,
-} = require("../controllers/electro.controller.js");
-
-const {
-  addWaterCounterToDatabase,
-  getWaterLastCounterData,
-} = require("../controllers/water.controller.js");
-
-const {
-  addGazCounterToDatabase,
-  getGazLastCounterData,
-} = require("../controllers/gaz.controller.js");
+import Router from "express";
+import * as setup from "../controllers/setup.controller.js";
+import * as electro from "../controllers/electro.controller.js";
+import * as water from "../controllers/water.controller.js";
+import * as gaz from "../controllers/gaz.controller.js";
 
 const router = new Router();
 
-router.get("/", getPriceFromDatabase);
-router.post("/setup", addPriceToDatabase);
-router.post("/setting", getLastSettingFromDatabase);
+router.get("/", setup.addPriceToDatabase);
+router.post("/setup", setup.addPriceToDatabase);
+router.post("/setting", setup.getLastSettingFromDatabase);
 
-router.post("/electro/add", addElectroCounterToDatabase);
-router.post("/electro/lastcounter", getElectroLastCounterData);
+router.post("/electro/add", electro.addElectroCounterToDatabase);
+router.post("/electro/lastcounter", electro.getElectroLastCounterData);
 
-router.post("/water/add", addWaterCounterToDatabase);
-router.post("/water/lastcounter", getWaterLastCounterData);
+router.post("/water/add", water.addWaterCounterToDatabase);
+router.post("/water/lastcounter", water.getWaterLastCounterData);
 
-router.post("/gaz/add", addGazCounterToDatabase);
-router.post("/gaz/lastcounter", getGazLastCounterData);
+router.post("/gaz/add", gaz.addGazCounterToDatabase);
+router.post("/gaz/lastcounter", gaz.getGazLastCounterData);
 
-module.exports = router;
+export default router;

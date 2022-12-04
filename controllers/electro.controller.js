@@ -1,11 +1,11 @@
-const { sequelize } = require("../db/db_init.js");
-const { ElectroCounter } = require("../models/db_modls.js");
-const { searchMaxId } = require("../utils/utilites.js");
+import { sequelize } from "../db/db_init.js";
+import { ElectroCounter } from "../models/db_models.js";
+import { searchMaxId } from "../utils/utilites.js";
 
 // запись предыдущего и текущего счетчиков в базу
 // запись суммы оплаты
 
-const addElectroCounterToDatabase = async (req, res) => {
+export const addElectroCounterToDatabase = async (req, res) => {
   try {
     const { counter_prev, counter_current, sum } = req.body;
     const data = await ElectroCounter.build({
@@ -34,7 +34,7 @@ const addElectroCounterToDatabase = async (req, res) => {
   }
 };
 
-const getElectroLastCounterData = async (req, res) => {
+export const getElectroLastCounterData = async (req, res) => {
   try {
     // const data = await ElectroCounter.findOne({
     //   order: sequelize.fn("max", sequelize.col("id")),
@@ -53,9 +53,4 @@ const getElectroLastCounterData = async (req, res) => {
       message: "Ошибка запроса данных",
     });
   }
-};
-
-module.exports = {
-  addElectroCounterToDatabase,
-  getElectroLastCounterData,
 };

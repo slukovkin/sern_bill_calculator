@@ -1,7 +1,7 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require("../db/db_init");
+import { DataTypes } from "sequelize";
+import { sequelize } from "../db/db_init.js";
 
-const SetupBase = sequelize.define(
+export const SetupBase = sequelize.define(
   "setup",
   {
     eprice: {
@@ -24,7 +24,7 @@ const SetupBase = sequelize.define(
   }
 );
 
-const ElectroCounter = sequelize.define(
+export const ElectroCounter = sequelize.define(
   "electro",
   {
     counter_prev: {
@@ -47,7 +47,7 @@ const ElectroCounter = sequelize.define(
   }
 );
 
-const WaterCounter = sequelize.define(
+export const WaterCounter = sequelize.define(
   "water",
   {
     counter_prev: {
@@ -70,7 +70,7 @@ const WaterCounter = sequelize.define(
   }
 );
 
-const GazCounter = sequelize.define(
+export const GazCounter = sequelize.define(
   "gaz",
   {
     counter_prev: {
@@ -92,10 +92,3 @@ const GazCounter = sequelize.define(
     freezeTableName: true,
   }
 );
-
-module.exports = {
-  SetupBase,
-  ElectroCounter,
-  WaterCounter,
-  GazCounter,
-};
