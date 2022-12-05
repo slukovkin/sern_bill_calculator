@@ -60,7 +60,7 @@ function Counter(props) {
     getSettings();
     getCounterPrev();
     document.title = props.title;
-  });
+  },[]);
 
   return (
     <>
