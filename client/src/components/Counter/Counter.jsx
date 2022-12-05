@@ -7,16 +7,15 @@ function Counter(props) {
   const [price, setPrice] = useState(0);
   const [payment, setPayment] = useState(0);
 
-  function saveData() {
+  function saveSettings() {
     axios({
       method: "post",
       url: props.setUrl,
-      data: [
+      data: {
         counterPrev,
         counterCurr,
         payment,
-        
-      ],
+      },
     })
       .then((res) => {
         console.log("OK");
@@ -47,20 +46,23 @@ function Counter(props) {
 
   function sendForm(e) {
     e.preventDefault();
-    
-    setPayment(+((counterCurr - counterPrev) * price).toFixed(2));
-    // return console.log(counterCurr, counterPrev, price, payment);
-    saveData();
+    // return console.log(counterPrev, counterCurr, price, payment);
+    saveSettings();
     setCounterPrev("");
     setCounterCurr("");
     
   }
 
   useEffect(() => {
+    setPayment(+((counterCurr - counterPrev) * price).toFixed(2));
+  }, [counterPrev, price, counterCurr])
+  
+
+  useEffect(() => {
+    getCounterPrev()
     getSettings();
-    getCounterPrev();
     document.title = props.title;
-  },[]);
+  },[props]);
 
   return (
     <>
@@ -69,7 +71,7 @@ function Counter(props) {
         <input
           type='number'
           name='counterPrev'
-          value={counterPrev || ""}
+          value={counterPrev || 0}
           onChange={(e) => setCounterPrev(e.target.value)}
         />
 
@@ -77,7 +79,7 @@ function Counter(props) {
         <input
           type='number'
           name='counterCurr'
-          value={counterCurr || ""}
+          value={counterCurr || ''}
           onChange={(e) => setCounterCurr(e.target.value)}
         />
 

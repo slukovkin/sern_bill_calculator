@@ -7,10 +7,10 @@ import { searchMaxId } from "../utils/utilites.js";
 
 export const addGazCounterToDatabase = async (req, res) => {
   try {
-    const { counter_prev, counter_current, payment } = req.body;
+    const { counterPrev, counterCurr, payment } = req.body;
     const data = await GazCounter.build({
-      counter_prev,
-      counter_current,
+      counterPrev,
+      counterCurr,
       payment,
     });
 

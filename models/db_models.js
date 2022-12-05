@@ -50,11 +50,11 @@ export const ElectroCounter = sequelize.define(
 export const WaterCounter = sequelize.define(
   "water",
   {
-    counter_prev: {
+    counterPrev: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    counter_current: {
+    counterCurr: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
@@ -73,11 +73,11 @@ export const WaterCounter = sequelize.define(
 export const GazCounter = sequelize.define(
   "gaz",
   {
-    counter_prev: {
+    counterPrev: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    counter_current: {
+    counterCurr: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
