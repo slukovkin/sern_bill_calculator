@@ -9,7 +9,7 @@ function Report(props) {
     <>
       <table>
         <tbody>
-          <h2>Журнал оплат</h2>
+          <h2>Журнал платежей</h2>
           <th>Назначение платежа</th>
           <th>Предыдущий счетчик</th>
           <th>Текущий счетчик</th>
@@ -17,12 +17,12 @@ function Report(props) {
           <th>Тариф</th>
           <th>Сумма</th>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>цифра</td>
+            <td>цифра</td>
+            <td>цифра</td>
+            <td>цифра</td>
+            <td>цифра</td>
+            <td>цифра</td>
           </tr>
         </tbody>
       </table>
