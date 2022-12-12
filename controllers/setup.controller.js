@@ -40,6 +40,7 @@ export const getLastSettingFromDatabase = async (req, res) => {
   try {
     const data = await SetupBase.findAll();
     const id = searchMaxId(data);
+    console.log(id);
     const lastSetting = await SetupBase.findOne({ where: id });
     if (!lastSetting) {
       return res.json({

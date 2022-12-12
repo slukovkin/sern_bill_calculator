@@ -2,7 +2,7 @@
 
 export function searchMaxId(data) {
   const result = [];
-  data.reduce((acc, item) => {
+  data.map((item) => {
     result.push(item.id);
   }, []);
   const id = Math.max(...result);

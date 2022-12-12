@@ -46,20 +46,17 @@ function Counter(props) {
 
   function sendForm(e) {
     e.preventDefault();
-    // return console.log(counterPrev, counterCurr, price, payment);
     saveSettings();
     setCounterPrev("");
     setCounterCurr("");
-    
   }
 
   useEffect(() => {
     setPayment(+((counterCurr - counterPrev) * price).toFixed(2));
-  }, [counterPrev, price, counterCurr])
-  
+  }, [counterPrev, price, counterCurr]);
 
   useEffect(() => {
-    getCounterPrev()
+    getCounterPrev();
     getSettings();
     document.title = props.title;
   },[props]);
@@ -71,7 +68,7 @@ function Counter(props) {
         <input
           type='number'
           name='counterPrev'
-          value={counterPrev || 0}
+          value={counterPrev || ''}
           onChange={(e) => setCounterPrev(e.target.value)}
         />
 
@@ -79,7 +76,7 @@ function Counter(props) {
         <input
           type='number'
           name='counterCurr'
-          value={counterCurr || ''}
+          value={counterCurr || ""}
           onChange={(e) => setCounterCurr(e.target.value)}
         />
 
