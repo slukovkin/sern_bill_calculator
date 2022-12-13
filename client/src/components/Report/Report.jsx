@@ -1,25 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Report.module.css";
 
 function Report(props) {
-  const [alldata, setAlldata] = useState([])
+  const [alldata, setAlldata] = useState([]);
 
   function getSettings() {
     axios({
       method: "post",
       url: props.getAllData,
     }).then((res) => {
-      let data = Object.values(res.data)
+      let data = Object.values(res.data);
       console.log(data[0]);
-      setAlldata(data[0][0])
+      setAlldata(data[0][0]);
     });
   }
 
-  React.useEffect(() => {
-    getSettings()
+  useEffect(() => {
+    getSettings();
     document.title = props.title;
-  },[props]);
+  }, [props]);
   return (
     <>
       <table>
@@ -35,7 +35,7 @@ function Report(props) {
             <td>{alldata.createdAt}</td>
             <td>{alldata.counterPrev}</td>
             <td>{alldata.counterCurr}</td>
-            <td>{alldata.counterCurr-alldata.counterPrev}</td>
+            <td>{alldata.counterCurr - alldata.counterPrev}</td>
             <td></td>
             <td>{alldata.payment}</td>
           </tr>

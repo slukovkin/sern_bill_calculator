@@ -50,7 +50,7 @@ function Settings(props) {
   useEffect(() => {
     getSettings();
     document.title = props.title;
-  },[props]);
+  }, [props]);
 
   return (
     <>
