@@ -3,7 +3,10 @@ import axios from "axios";
 import "./Report.module.css";
 
 function Report(props) {
-  const [alldata, setAlldata] = useState([]);
+  const [electro, setElectro] = useState([]);
+  const [water, setWater] = useState([]);
+  const [gaz, setGaz] = useState([]);
+  const [setting, setSetting] = useState([]);
 
   function getSettings() {
     axios({
@@ -11,8 +14,10 @@ function Report(props) {
       url: props.getAllData,
     }).then((res) => {
       let data = Object.values(res.data);
-      console.log(data[0]);
-      setAlldata(data[0][0]);
+      setElectro(data[0]);
+      setWater(data[1]);
+      setGaz(data[2]);
+      setSetting(data[3]);
     });
   }
 
@@ -32,12 +37,28 @@ function Report(props) {
           <th>Тариф</th>
           <th>Сумма</th>
           <tr>
-            <td>{alldata.createdAt}</td>
-            <td>{alldata.counterPrev}</td>
-            <td>{alldata.counterCurr}</td>
-            <td>{alldata.counterCurr - alldata.counterPrev}</td>
-            <td></td>
-            <td>{alldata.payment}</td>
+            <td>{electro.createdAt}</td>
+            <td>{electro.counterPrev}</td>
+            <td>{electro.counterCurr}</td>
+            <td>{electro.counterCurr - electro.counterPrev}</td>
+            <td>{setting.eprice}</td>
+            <td>{electro.payment}</td>
+          </tr>
+          <tr>
+            <td>{water.createdAt}</td>
+            <td>{water.counterPrev}</td>
+            <td>{water.counterCurr}</td>
+            <td>{water.counterCurr - water.counterPrev}</td>
+            <td>{setting.wprice}</td>
+            <td>{water.payment}</td>
+          </tr>
+          <tr>
+            <td>{gaz.createdAt}</td>
+            <td>{gaz.counterPrev}</td>
+            <td>{gaz.counterCurr}</td>
+            <td>{gaz.counterCurr - gaz.counterPrev}</td>
+            <td>{setting.gprice}</td>
+            <td>{gaz.payment}</td>
           </tr>
         </tbody>
       </table>
