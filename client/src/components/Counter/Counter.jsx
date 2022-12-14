@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import './Counter.module.css'
 
 function Counter(props) {
   const [counterPrev, setCounterPrev] = useState(0);
