@@ -7,7 +7,7 @@ table {
 }
 
 th {
-  width: 200px;
+  /* width: 200px; */
   padding: 10px;
   background: #000;
   color: whitesmoke;

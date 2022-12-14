@@ -55,7 +55,7 @@ function Settings(props) {
   return (
     <>
       <form className='form' onSubmit={sendForm}>
-        <h2>Тарифы на {data.slice(0, 10)}</h2>
+        <h3>Тарифы на {data.slice(0, 10)}</h3>
         <label htmlFor='e_price'>Цена за электроэнергию (1 кВт)</label>
         <input
           type='number'
@@ -74,7 +74,7 @@ function Settings(props) {
           placeholder='Цена за 1 куб'
         />
 
-        <label htmlFor='g_price'>Цена за газоснабжение (1 кВт)</label>
+        <label htmlFor='g_price'>Цена за газоснабжение (1 куб)</label>
         <input
           type='number'
           name='g_price'
