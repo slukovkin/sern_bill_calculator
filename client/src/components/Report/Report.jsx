@@ -37,7 +37,7 @@ function Report(props) {
           <th>Тариф</th>
           <th>Сумма</th>
           <tr>
-            <td>{electro.createdAt}</td>
+            <td>{(electro.createdAt).slice(0,11)}</td>
             <td>{electro.counterPrev}</td>
             <td>{electro.counterCurr}</td>
             <td>{electro.counterCurr - electro.counterPrev}</td>
@@ -45,7 +45,7 @@ function Report(props) {
             <td>{electro.payment}</td>
           </tr>
           <tr>
-            <td>{water.createdAt}</td>
+            <td>{(water.createdAt).slice(0,11)}</td>
             <td>{water.counterPrev}</td>
             <td>{water.counterCurr}</td>
             <td>{water.counterCurr - water.counterPrev}</td>
@@ -53,7 +53,7 @@ function Report(props) {
             <td>{water.payment}</td>
           </tr>
           <tr>
-            <td>{gaz.createdAt}</td>
+            <td>{(gaz.createdAt).slice(0,11)}</td>
             <td>{gaz.counterPrev}</td>
             <td>{gaz.counterCurr}</td>
             <td>{gaz.counterCurr - gaz.counterPrev}</td>
