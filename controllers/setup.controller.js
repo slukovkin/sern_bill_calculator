@@ -49,7 +49,7 @@ export const getLastSettingFromDatabase = async (req, res) => {
     }
     res.json(lastSetting);
   } catch (err) {
-    res.status(400).json(
+    res.json(
       {
         message: "Ошибка запроса данных",
       },
