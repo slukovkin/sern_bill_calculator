@@ -22,7 +22,7 @@ router.post("/gaz/add", gaz.addGazCounterToDatabase);
 router.post("/gaz/lastcounter", gaz.getGazLastCounterData);
 
 router.get("/alldata", data.getAllData)
-router.get("/report", report.getReportData)
+router.get("/report/:date", report.getReportData)
 router.post("/create_report", report.createReport)
 
 export default router;
