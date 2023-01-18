@@ -1,5 +1,5 @@
-import { DataTypes } from "sequelize";
-import { sequelize } from "../db/db_init.js";
+import { DataTypes } from "sequelize"
+import { sequelize } from "../db/db_init.js"
 
 export const SetupBase = sequelize.define(
   "setup",
@@ -22,7 +22,7 @@ export const SetupBase = sequelize.define(
     modelName: "setup",
     freezeTableName: true,
   }
-);
+)
 
 export const ElectroCounter = sequelize.define(
   "electro",
@@ -45,7 +45,7 @@ export const ElectroCounter = sequelize.define(
     modelName: "electro",
     freezeTableName: true,
   }
-);
+)
 
 export const WaterCounter = sequelize.define(
   "water",
@@ -68,7 +68,7 @@ export const WaterCounter = sequelize.define(
     modelName: "water",
     freezeTableName: true,
   }
-);
+)
 
 export const GazCounter = sequelize.define(
   "gaz",
@@ -91,4 +91,54 @@ export const GazCounter = sequelize.define(
     modelName: "gaz",
     freezeTableName: true,
   }
-);
+)
+
+export const Report = sequelize.define(
+  "report",
+  {
+    date: {
+      type: DataTypes.STRING,
+    },
+    electro_data: {
+      type: DataTypes.JSON,
+    },
+    water_data: {
+      type: DataTypes.JSON,
+    },
+    gaz_data: {
+      type: DataTypes.JSON,
+    },
+  },
+  {
+    timestamps: true,
+    modelName: "report",
+  }
+)
+
+// electro_data: {
+//   type: {
+//     counter_prev: DataTypes.INTEGER,
+//     counter_current: DataTypes.INTEGER,
+//     quantity: DataTypes.FLOAT,
+//     price: DataTypes.FLOAT,
+//     payment: DataTypes.FLOAT
+//   }
+// },
+// water_data: {
+//   type: {
+//     counter_prev: DataTypes.INTEGER,
+//     counter_current: DataTypes.INTEGER,
+//     quantity: DataTypes.FLOAT,
+//     price: DataTypes.FLOAT,
+//     payment: DataTypes.FLOAT
+//   }
+// },
+// gaz_data: {
+//   type: {
+//     counter_prev: DataTypes.INTEGER,
+//     counter_current: DataTypes.INTEGER,
+//     quantity: DataTypes.FLOAT,
+//     price: DataTypes.FLOAT,
+//     payment: DataTypes.FLOAT
+//   }
+// },

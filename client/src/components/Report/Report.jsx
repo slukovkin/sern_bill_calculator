@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./Report.module.css";
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import "./Report.module.css"
 
 function Report(props) {
-  const [electro, setElectro] = useState([]);
-  const [water, setWater] = useState([]);
-  const [gaz, setGaz] = useState([]);
-  const [setting, setSetting] = useState([]);
+  const [electro, setElectro] = useState([])
+  const [water, setWater] = useState([])
+  const [gaz, setGaz] = useState([])
+  const [setting, setSetting] = useState([])
 
   function getSettings() {
     axios({
-      method: "post",
+      method: "get",
       url: props.getAllData,
     }).then((res) => {
-      let data = Object.values(res.data);
-      setElectro(data[0]);
-      setWater(data[1]);
-      setGaz(data[2]);
-      setSetting(data[3]);
-    });
+      let data = Object.values(res.data)
+      setElectro(data[0])
+      setWater(data[1])
+      setGaz(data[2])
+      setSetting(data[3])
+    })
   }
 
   useEffect(() => {
-    getSettings();
-    document.title = props.title;
-  }, [props.title]);
+    getSettings()
+    document.title = props.title
+  }, [props.title])
   return (
     <>
       <table>
@@ -69,7 +69,7 @@ function Report(props) {
         </tbody>
       </table>
     </>
-  );
+  )
 }
 
-export default Report;
+export default Report

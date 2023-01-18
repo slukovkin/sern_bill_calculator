@@ -4,6 +4,7 @@ import * as electro from "../controllers/electro.controller.js";
 import * as water from "../controllers/water.controller.js";
 import * as gaz from "../controllers/gaz.controller.js";
 import * as data from "../controllers/alldata.controller.js"
+import * as report from "../controllers/report_controller.js";
 
 const router = new Router();
 
@@ -20,6 +21,8 @@ router.post("/water/lastcounter", water.getWaterLastCounterData);
 router.post("/gaz/add", gaz.addGazCounterToDatabase);
 router.post("/gaz/lastcounter", gaz.getGazLastCounterData);
 
-router.post("/alldata", data.getAllData)
+router.get("/alldata", data.getAllData)
+router.get("/report", report.getReportData)
+router.post("/create_report", report.createReport)
 
 export default router;
