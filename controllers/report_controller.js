@@ -2,9 +2,18 @@ import { Report } from "../models/db_models.js"
 
 export const getReportData = async (req, res) => {
   const data = await Report.findAll()
-
+  // Посик по дате
+  const frontDate = "2024" // Дата должна прилетать с фронта
+  let result = data.filter((value) => {
+    if((value.date).includes(frontDate)){
+      return value
+    }
+  })
+  if(result.length == 0){
+    result = data
+  }
   return res.json({
-    data
+    result
   })
 }
 
