@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./Counter.module.css";
 
 function Counter(props) {
   const [counterPrev, setCounterPrev] = useState(0);
   const [counterCurr, setCounterCurr] = useState(0);
   const [price, setPrice] = useState(0);
   const [payment, setPayment] = useState(0);
+  const [date, setDate] = useState(0);
 
   function saveSettings() {
     axios({
@@ -41,6 +43,7 @@ function Counter(props) {
     }).then((res) => {
       let data = Object.values(res.data);
       setCounterPrev(data[2]);
+      setDate(data[4].slice(0, 10));
     });
   }
 
@@ -59,16 +62,17 @@ function Counter(props) {
     getCounterPrev();
     getSettings();
     document.title = props.title;
-  },[props]);
+  }, [props]);
 
   return (
     <>
       <form className='form' onSubmit={sendForm}>
+        <h3>Показание счетчика на {date}</h3>
         <label htmlFor='counterPrev'>Предыдущий счетчик</label>
         <input
           type='number'
           name='counterPrev'
-          value={counterPrev || ''}
+          value={counterPrev || ""}
           onChange={(e) => setCounterPrev(e.target.value)}
         />
 

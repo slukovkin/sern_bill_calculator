@@ -1,0 +1,21 @@
+table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px auto;
+  text-align: center;
+}
+
+th {
+  /* width: 200px; */
+  padding: 10px;
+  background: #000;
+  color: whitesmoke;
+}
+
+td {
+  text-align: center;
+  padding: 10px;
+  background: rgb(216, 216, 216);
+  color: teal;
+}
