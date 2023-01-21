@@ -20,7 +20,18 @@ td {
   color: teal;
 }
 
+<<<<<<< HEAD
 span {
   margin: 0 15px;
   font-weight: 600;
+=======
+h4 {
+  display: inline;
+  margin: 0 10px;
+}
+
+.btn {
+  padding: 0 50px;
+  height: 39px;
+>>>>>>> 1d6748f66bea7961618f421341e6691794d087d3
 }
