@@ -4,3 +4,5 @@
 - Данные сохраняются в базе данных SQLite (база формируется автоматически при первом запуске)
 
 # Sqlite3, Express, React, NodeJs
+
+demo_shots/report.png
