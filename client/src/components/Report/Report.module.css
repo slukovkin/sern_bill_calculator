@@ -19,3 +19,8 @@ td {
   background: rgb(216, 216, 216);
   color: teal;
 }
+
+span {
+  margin: 0 15px;
+  font-weight: 600;
+}

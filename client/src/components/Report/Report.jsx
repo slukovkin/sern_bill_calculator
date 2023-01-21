@@ -29,6 +29,30 @@ function Report(props) {
     <>
       <table>
         <tbody>
+          <tr colSpan={6}>
+            <h3>Выбор отчета: </h3>
+            <span>Год</span>
+            <select>
+              <option>2022</option>
+              <option>2023</option>
+            </select>
+            <span>Месяц</span>
+            <select>
+              <option></option>
+              <option>Январь</option>
+              <option>Февраль</option>
+              <option>Март</option>
+              <option>Апрель</option>
+              <option>Май</option>
+              <option>Июнь</option>
+              <option>Июль</option>
+              <option>Август</option>
+              <option>Сентябрь</option>
+              <option>Октябрь</option>
+              <option>Ноябрь</option>
+              <option>Декабрь</option>
+            </select>
+          </tr>
           <tr>
             <th colSpan={6}>
               <h3>Журнал платежей</h3>
