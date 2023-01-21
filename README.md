@@ -5,4 +5,5 @@
 
 # Sqlite3, Express, React, NodeJs
 
-demo_shots/report.png
+![Страница с отчетами](/demo_shots/report.png)
+
