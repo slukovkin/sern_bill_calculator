@@ -19,3 +19,13 @@ td {
   background: rgb(216, 216, 216);
   color: teal;
 }
+
+h4 {
+  display: inline;
+  margin: 0 10px;
+}
+
+.btn {
+  padding: 0 50px;
+  height: 39px;
+}

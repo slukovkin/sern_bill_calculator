@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-import "./Report.module.css"
+import cl from "./Report.module.css"
 
 function Report(props) {
   const [electro, setElectro] = useState([])
   const [water, setWater] = useState([])
   const [gaz, setGaz] = useState([])
   const [setting, setSetting] = useState([])
+  const [dateReport, setDateReport] = useState("")
 
-  function getSettings() {
+  function getElement() {
+    let date = document.querySelector("#date")
+    date = date.value
+    setDateReport(date.slice(0, 7))
+  }
+
+  useEffect(() => {
     axios({
       method: "get",
       url: props.getAllData,
@@ -19,19 +26,29 @@ function Report(props) {
       setGaz(data[2])
       setSetting(data[3])
     })
-  }
-
-  useEffect(() => {
-    getSettings()
     document.title = props.title
-  }, [props.title])
+  }, [props])
+
   return (
     <>
       <table>
         <tbody>
           <tr>
             <th colSpan={6}>
-              <h3>Журнал платежей</h3>
+              <span>Поиск отчета по дате: </span>
+              <input type='date' id='date' />
+              <button className={cl.btn} onClick={getElement}>
+                Выбрать
+              </button>
+              <h4>Сегодня: {Date().slice(0, 15)} </h4>
+            </th>
+          </tr>
+          <tr>
+            <th colSpan={6}>
+              <h3>
+                Журнал платежей
+                {dateReport.length === 0 ? "" : ` на ${dateReport}`}
+              </h3>
             </th>
           </tr>
           <tr>
