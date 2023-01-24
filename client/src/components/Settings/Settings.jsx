@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./Settings.module.css";
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import "./Settings.module.css"
 
 function Settings(props) {
-  const [eprice, setEprice] = useState(0);
-  const [wprice, setWprice] = useState(0);
-  const [gprice, setGprice] = useState(0);
-  const [data, setData] = useState("");
+  const [eprice, setEprice] = useState(0)
+  const [wprice, setWprice] = useState(0)
+  const [gprice, setGprice] = useState(0)
+  const [data, setData] = useState("")
 
   function saveSettings() {
     axios({
@@ -19,38 +19,37 @@ function Settings(props) {
       },
     })
       .then((res) => {
-        console.log("OK");
+        console.log("OK")
       })
       .catch((res) => {
-        console.log("False");
-      });
-  }
-
-  function getSettings() {
-    axios({
-      method: "post",
-      url: props.getUrl,
-    }).then((res) => {
-      let data = Object.values(res.data);
-      setEprice(data[1]);
-      setWprice(data[2]);
-      setGprice(data[3]);
-      setData(data[4]);
-    });
+        console.log("False")
+      })
   }
 
   function sendForm(e) {
-    e.preventDefault();
-    saveSettings();
-    setEprice("");
-    setWprice("");
-    setGprice("");
+    e.preventDefault()
+    saveSettings()
+    setEprice("")
+    setWprice("")
+    setGprice("")
   }
 
   useEffect(() => {
-    getSettings();
-    document.title = props.title;
-  }, [props]);
+    const getSetting = () => {
+      axios({
+        method: "post",
+        url: props.getUrl,
+      }).then((res) => {
+        let data = Object.values(res.data)
+        setEprice(data[1])
+        setWprice(data[2])
+        setGprice(data[3])
+        setData(data[4])
+      })
+    }
+    getSetting()
+    document.title = props.title
+  }, [props])
 
   return (
     <>
@@ -86,7 +85,7 @@ function Settings(props) {
         <button type='submit'>Сохранить</button>
       </form>
     </>
-  );
+  )
 }
 
-export default Settings;
+export default Settings
