@@ -27,25 +27,6 @@ function Counter(props) {
       });
   }
 
-  function getSettings() {
-    axios({
-      method: "post",
-      url: props.getUrl,
-    }).then((res) => {
-      let data = Object.values(res.data);
-      setPrice(data[props.idx]);
-    });
-  }
-  function getCounterPrev() {
-    axios({
-      method: "post",
-      url: props.getCounter,
-    }).then((res) => {
-      let data = Object.values(res.data);
-      setCounterPrev(data[2]);
-      setDate(data[4].slice(0, 10));
-    });
-  }
 
   function sendForm(e) {
     e.preventDefault();
@@ -59,6 +40,26 @@ function Counter(props) {
   }, [counterPrev, price, counterCurr]);
 
   useEffect(() => {
+    const getCounterPrev = () => {
+      axios({
+        method: "post",
+        url: props.getCounter,
+      }).then((res) => {
+        let data = Object.values(res.data);
+        setCounterPrev(data[2]);
+        setDate(data[4].slice(0, 10));
+      });
+    }
+
+    const getSettings = () => {
+      axios({
+        method: "post",
+        url: props.getUrl,
+      }).then((res) => {
+        let data = Object.values(res.data);
+        setPrice(data[props.idx]);
+      });
+    }
     getCounterPrev();
     getSettings();
     document.title = props.title;
