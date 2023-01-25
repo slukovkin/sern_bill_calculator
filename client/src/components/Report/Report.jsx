@@ -16,16 +16,19 @@ function Report(props) {
   }
 
   useEffect(() => {
-    axios({
-      method: "get",
-      url: props.getAllData,
-    }).then((res) => {
-      let data = Object.values(res.data)
-      setElectro(data[0])
-      setWater(data[1])
-      setGaz(data[2])
-      setSetting(data[3])
-    })
+    const getSetting = () => {
+      axios({
+        method: "get",
+        url: props.getAllData,
+      }).then((res) => {
+        let data = Object.values(res.data)
+        setElectro(data[0])
+        setWater(data[1])
+        setGaz(data[2])
+        setSetting(data[3])
+      })
+    }
+    getSetting()
     document.title = props.title
   }, [props])
 
