@@ -37,7 +37,7 @@ function Report(props) {
       <table>
         <tbody>
           <tr>
-            <th colSpan={6}>
+            <th colSpan={7}>
               <span>Поиск отчета по дате: </span>
               <input type='date' id='date' />
               <button className={cl.btn} onClick={getElement}>
@@ -47,7 +47,7 @@ function Report(props) {
             </th>
           </tr>
           <tr>
-            <th colSpan={6}>
+            <th colSpan={7}>
               <h3>
                 Журнал платежей
                 {dateReport.length === 0 ? "" : ` на ${dateReport}`}
@@ -61,6 +61,7 @@ function Report(props) {
             <th>Кол-во</th>
             <th>Тариф</th>
             <th>Сумма</th>
+            <th>Сумма к оплате</th>
           </tr>
           <tr>
             <td>Электроснабжение</td>
@@ -69,6 +70,7 @@ function Report(props) {
             <td>{electro.counterCurr - electro.counterPrev}</td>
             <td>{setting.eprice}</td>
             <td>{electro.payment}</td>
+            <td rowSpan={3}>{electro.payment+water.payment+gaz.payment}</td>
           </tr>
           <tr>
             <td>Водоснабжение</td>
@@ -86,6 +88,7 @@ function Report(props) {
             <td>{setting.gprice}</td>
             <td>{gaz.payment}</td>
           </tr>
+          
         </tbody>
       </table>
     </>
