@@ -1,18 +1,35 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-import cl from "./Report.module.css"
+import "./Report.module.css"
+import { months } from "../../data/data.js"
+
+const dates = new Date()
 
 function Report(props) {
   const [electro, setElectro] = useState([])
   const [water, setWater] = useState([])
   const [gaz, setGaz] = useState([])
   const [setting, setSetting] = useState([])
-  const [dateReport, setDateReport] = useState("")
+  const [dateReport, setDateReport] = useState(dates.toISOString().slice(0, 7))
 
-  function getElement() {
-    let date = document.querySelector("#date")
-    date = date.value
-    setDateReport(date.slice(0, 7))
+  function selectMonthHandler() {
+    let month = document.querySelector("#months")
+    month = month.value.length < 2 ? `2023-0${month.value}` : `2023-${month.value}`
+    setDateReport(month)
+    axios({
+      method: 'post',
+      url: props.monthData,
+      data: dateReport
+    }).then((res) => {
+      let data = Object.values(res)
+      console.log(data);
+      // setElectro(data[0])
+      // setWater(data[1])
+      // setGaz(data[2])
+      // setSetting(data[3])
+    }).catch((e) => {
+      console.log(e);
+    })
   }
 
   useEffect(() => {
@@ -22,6 +39,7 @@ function Report(props) {
         url: props.getAllData,
       }).then((res) => {
         let data = Object.values(res.data)
+
         setElectro(data[0])
         setWater(data[1])
         setGaz(data[2])
@@ -32,6 +50,7 @@ function Report(props) {
     document.title = props.title
   }, [props])
 
+
   return (
     <>
       <table>
@@ -39,19 +58,24 @@ function Report(props) {
           <tr>
             <th colSpan={7}>
               <span>Поиск отчета по дате: </span>
-              <input type='date' id='date' />
-              <button className={cl.btn} onClick={getElement}>
+              <select name="months" id="months" onChange={selectMonthHandler}>
+                {months.map((month, idx) => {
+                  return (
+                    <option
+                      value={idx} key={idx}
+                    >{month}</option>
+                  )
+                })}
+              </select>
+              {/* <button className={cl.btn} onClick={selectMonthHandler}>
                 Выбрать
-              </button>
+              </button> */}
               <h4>Сегодня: {Date().slice(0, 15)} </h4>
             </th>
           </tr>
           <tr>
             <th colSpan={7}>
-              <h3>
-                Журнал платежей
-                {dateReport.length === 0 ? "" : ` на ${dateReport}`}
-              </h3>
+              {dateReport.length === 0 ? "" : <h3>Журнал платежей на {dateReport}</h3>}
             </th>
           </tr>
           <tr>
@@ -70,7 +94,7 @@ function Report(props) {
             <td>{electro.counterCurr - electro.counterPrev}</td>
             <td>{setting.eprice}</td>
             <td>{electro.payment}</td>
-            <td rowSpan={3}>{electro.payment+water.payment+gaz.payment}</td>
+            <td rowSpan={3}>{(electro.payment + water.payment + gaz.payment).toFixed(2)}</td>
           </tr>
           <tr>
             <td>Водоснабжение</td>
@@ -88,7 +112,7 @@ function Report(props) {
             <td>{setting.gprice}</td>
             <td>{gaz.payment}</td>
           </tr>
-          
+
         </tbody>
       </table>
     </>

@@ -1,10 +1,10 @@
-import "./App.css";
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Report from "./components/Report/Report";
-import Counter from "./components/Counter/Counter";
-import Settings from "./components/Settings/Settings";
+import "./App.css"
+import React from "react"
+import { Routes, Route } from "react-router-dom"
+import Header from "./components/Header/Header"
+import Report from "./components/Report/Report"
+import Counter from "./components/Counter/Counter"
+import Settings from "./components/Settings/Settings"
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
               <Report
                 title='Отчет по платежам'
                 getAllData='http://localhost:3003/api/alldata'
+                monthData='http://localhost:3003/api/monthdata'
               />
             }
           />
@@ -70,7 +71,7 @@ function App() {
         </Routes>
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
