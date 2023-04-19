@@ -46,6 +46,7 @@ export const getMonthReport = async (req, res) => {
     )
 
     const data = [...el, ...wt, ...gz, ...st]
+    // console.log(data);
 
     if (!data) return
     res.json(data)

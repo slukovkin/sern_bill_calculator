@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-import "./Report.module.css"
+import cl from "./Report.module.css"
 import { months } from "../../data/data.js"
 
 const dates = new Date()
@@ -12,21 +12,21 @@ function Report(props) {
   const [setting, setSetting] = useState([])
   const [dateReport, setDateReport] = useState(dates.toISOString().slice(0, 7))
 
+
   function selectMonthHandler() {
+
     let month = document.querySelector("#months")
     month = month.value.length < 2 ? `2023-0${month.value}` : `2023-${month.value}`
     setDateReport(month)
-    axios({
-      method: 'post',
-      url: props.monthData,
+    axios.post(props.monthData, {
       data: dateReport
     }).then((res) => {
-      let data = Object.values(res)
-      console.log(data);
-      // setElectro(data[0])
-      // setWater(data[1])
-      // setGaz(data[2])
-      // setSetting(data[3])
+      let data = res.data
+      if (data.length === 0) return
+      setElectro(data[0])
+      setWater(data[1])
+      setGaz(data[2])
+      setSetting(data[3])
     }).catch((e) => {
       console.log(e);
     })
@@ -39,7 +39,7 @@ function Report(props) {
         url: props.getAllData,
       }).then((res) => {
         let data = Object.values(res.data)
-
+        // console.log(data);
         setElectro(data[0])
         setWater(data[1])
         setGaz(data[2])
@@ -58,7 +58,7 @@ function Report(props) {
           <tr>
             <th colSpan={7}>
               <span>Поиск отчета по дате: </span>
-              <select name="months" id="months" onChange={selectMonthHandler}>
+              <select name="months" id="months" onSelect={(e) => setDateReport(e.target.value)}>
                 {months.map((month, idx) => {
                   return (
                     <option
@@ -67,9 +67,9 @@ function Report(props) {
                   )
                 })}
               </select>
-              {/* <button className={cl.btn} onClick={selectMonthHandler}>
+              <button className={cl.btn} onClick={selectMonthHandler}>
                 Выбрать
-              </button> */}
+              </button>
               <h4>Сегодня: {Date().slice(0, 15)} </h4>
             </th>
           </tr>
