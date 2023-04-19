@@ -36,7 +36,7 @@ function Report(props) {
 
   useEffect(() => {
     selectMonthHandler()
-  })
+  }, [dateReport])
 
   useEffect(() => {
     const getSetting = () => {
