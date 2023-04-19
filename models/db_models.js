@@ -114,31 +114,3 @@ export const Report = sequelize.define(
     modelName: "report",
   }
 )
-
-// electro_data: {
-//   type: {
-//     counter_prev: DataTypes.INTEGER,
-//     counter_current: DataTypes.INTEGER,
-//     quantity: DataTypes.FLOAT,
-//     price: DataTypes.FLOAT,
-//     payment: DataTypes.FLOAT
-//   }
-// },
-// water_data: {
-//   type: {
-//     counter_prev: DataTypes.INTEGER,
-//     counter_current: DataTypes.INTEGER,
-//     quantity: DataTypes.FLOAT,
-//     price: DataTypes.FLOAT,
-//     payment: DataTypes.FLOAT
-//   }
-// },
-// gaz_data: {
-//   type: {
-//     counter_prev: DataTypes.INTEGER,
-//     counter_current: DataTypes.INTEGER,
-//     quantity: DataTypes.FLOAT,
-//     price: DataTypes.FLOAT,
-//     payment: DataTypes.FLOAT
-//   }
-// },
