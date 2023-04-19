@@ -29,7 +29,7 @@ function App() {
                 setUrl='http://localhost:3003/api/electro/add'
                 getUrl='http://localhost:3003/api/setting'
                 getCounter='http://localhost:3003/api/electro/lastcounter'
-                idx='1'
+                idx={1}
                 title='Электоснабжение'
               />
             }
@@ -41,7 +41,7 @@ function App() {
                 setUrl='http://localhost:3003/api/water/add'
                 getUrl='http://localhost:3003/api/setting'
                 getCounter='http://localhost:3003/api/water/lastcounter'
-                idx='2'
+                idx={2}
                 title='Водоснабжение'
               />
             }
@@ -53,7 +53,7 @@ function App() {
                 setUrl='http://localhost:3003/api/gaz/add'
                 getUrl='http://localhost:3003/api/setting'
                 getCounter='http://localhost:3003/api/gaz/lastcounter'
-                idx='3'
+                idx={3}
                 title='Газоснабжение'
               />
             }
