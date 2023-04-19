@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-import cl from "./Report.module.css"
+import "./Report.module.css"
 import { months } from "../../data/data.js"
-
-const dates = new Date()
 
 function Report(props) {
   const [electro, setElectro] = useState([])
   const [water, setWater] = useState([])
   const [gaz, setGaz] = useState([])
   const [setting, setSetting] = useState([])
-  const [dateReport, setDateReport] = useState(dates.toISOString().slice(0, 7))
+  const [dateReport, setDateReport] = useState('')
 
+  function convertMonth(e) {
+    let month = e
+    month = month.length < 2 ? `2023-0${month}` : `2023-${month}`
+    setDateReport(month)
+  }
 
   function selectMonthHandler() {
-
-    let month = document.querySelector("#months")
-    month = month.value.length < 2 ? `2023-0${month.value}` : `2023-${month.value}`
-    setDateReport(month)
     axios.post(props.monthData, {
       data: dateReport
     }).then((res) => {
@@ -26,11 +25,18 @@ function Report(props) {
       setElectro(data[0])
       setWater(data[1])
       setGaz(data[2])
-      setSetting(data[3])
+      if (!data[3]) {
+        setSetting(setting)
+      }
+      // setSetting(data[3])
     }).catch((e) => {
       console.log(e);
     })
   }
+
+  useEffect(() => {
+    selectMonthHandler()
+  }, [dateReport])
 
   useEffect(() => {
     const getSetting = () => {
@@ -39,11 +45,11 @@ function Report(props) {
         url: props.getAllData,
       }).then((res) => {
         let data = Object.values(res.data)
-        // console.log(data);
         setElectro(data[0])
         setWater(data[1])
         setGaz(data[2])
         setSetting(data[3])
+        setDateReport(data[0].createdAt.slice(0, 7))
       })
     }
     getSetting()
@@ -58,7 +64,7 @@ function Report(props) {
           <tr>
             <th colSpan={7}>
               <span>Поиск отчета по дате: </span>
-              <select name="months" id="months" onSelect={(e) => setDateReport(e.target.value)}>
+              <select name="months" id="months" onChange={(e) => convertMonth(e.target.value)}>
                 {months.map((month, idx) => {
                   return (
                     <option
@@ -67,9 +73,9 @@ function Report(props) {
                   )
                 })}
               </select>
-              <button className={cl.btn} onClick={selectMonthHandler}>
+              {/* <button className={cl.btn} onClick={selectMonthHandler}>
                 Выбрать
-              </button>
+              </button> */}
               <h4>Сегодня: {Date().slice(0, 15)} </h4>
             </th>
           </tr>
