@@ -1,1 +1,6 @@
-Add an option to the Report component to save the report to the database
+
+Create a form for input values counters.
+
+After entering the values, a report is created and written to the database
+
+Add an option to the Report component

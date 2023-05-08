@@ -26,6 +26,13 @@ h4 {
 }
 
 .btn {
-  padding: 0 50px;
-  height: 39px;
+  padding: 0px 50px;
+  font-size: 18px;
+  /* height: 39px; */
+  cursor: pointer;
+}
+
+select, option {
+  margin: 5px;
+  font-size: 16px;
 }

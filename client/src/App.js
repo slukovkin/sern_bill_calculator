@@ -1,10 +1,10 @@
-import "./App.css";
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Report from "./components/Report/Report";
-import Counter from "./components/Counter/Counter";
-import Settings from "./components/Settings/Settings";
+import "./App.css"
+import React from "react"
+import { Routes, Route } from "react-router-dom"
+import Header from "./components/Header/Header"
+import Report from "./components/Report/Report"
+import Counter from "./components/Counter/Counter"
+import Settings from "./components/Settings/Settings"
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
               <Report
                 title='Отчет по платежам'
                 getAllData='http://localhost:3003/api/alldata'
+                monthData='http://localhost:3003/api/monthdata'
               />
             }
           />
@@ -28,7 +29,7 @@ function App() {
                 setUrl='http://localhost:3003/api/electro/add'
                 getUrl='http://localhost:3003/api/setting'
                 getCounter='http://localhost:3003/api/electro/lastcounter'
-                idx='1'
+                idx={1}
                 title='Электоснабжение'
               />
             }
@@ -40,7 +41,7 @@ function App() {
                 setUrl='http://localhost:3003/api/water/add'
                 getUrl='http://localhost:3003/api/setting'
                 getCounter='http://localhost:3003/api/water/lastcounter'
-                idx='2'
+                idx={2}
                 title='Водоснабжение'
               />
             }
@@ -52,7 +53,7 @@ function App() {
                 setUrl='http://localhost:3003/api/gaz/add'
                 getUrl='http://localhost:3003/api/setting'
                 getCounter='http://localhost:3003/api/gaz/lastcounter'
-                idx='3'
+                idx={3}
                 title='Газоснабжение'
               />
             }
@@ -70,7 +71,7 @@ function App() {
         </Routes>
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

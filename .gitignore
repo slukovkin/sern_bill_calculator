@@ -2,4 +2,8 @@ node_modules
 .env
 db_app.sqlite
 test.sqlite
+<<<<<<< HEAD
 client/build
+=======
+build
+>>>>>>> 56eac50a2bde55db855d9ecc52ce0e3354864893
