@@ -16,27 +16,27 @@ function Report(props) {
     setDateReport(month)
   }
 
-  function selectMonthHandler() {
-    axios.post(props.monthData, {
-      data: dateReport
-    }).then((res) => {
-      let data = res.data
-      if (data.length === 0) return
-      setElectro(data[0])
-      setWater(data[1])
-      setGaz(data[2])
-      if (!data[3]) {
-        setSetting(setting)
-      }
-      // setSetting(data[3])
-    }).catch((e) => {
-      console.log(e);
-    })
-  }
 
   useEffect(() => {
+    function selectMonthHandler() {
+      axios.post(props.monthData, {
+        data: dateReport
+      }).then((res) => {
+        let data = res.data
+        if (data.length === 0) return
+        setElectro(data[0])
+        setWater(data[1])
+        setGaz(data[2])
+        if (!data[3]) {
+          setSetting(setting)
+        }
+        // setSetting(data[3])
+      }).catch((e) => {
+        console.log(e);
+      })
+    }
     selectMonthHandler()
-  }, [dateReport])
+  }, [dateReport, props.monthData, setting])
 
   useEffect(() => {
     const getSetting = () => {
@@ -64,14 +64,14 @@ function Report(props) {
           <tr>
             <th colSpan={7}>
               <span>Поиск отчета по дате: </span>
-              <select name="months" id="months" onChange={(e) => convertMonth(e.target.value)}>
-                {months.map((month, idx) => {
-                  return (
-                    <option
-                      value={idx} key={idx}
-                    >{month}</option>
-                  )
-                })}
+              <select name="months" id="months" onChange={(e) => convertMonth(e.target.value)} >
+                {months.map((month, idx) =>
+                  <option
+                    value={idx}
+                    key={idx}
+                  >{month}
+                  </option>
+                )}
               </select>
               {/* <button className={cl.btn} onClick={selectMonthHandler}>
                 Выбрать
