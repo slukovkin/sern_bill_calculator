@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./client
+    command: npm run start
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+
+  api:
+    build: ./
+    command: npm run dev
+    restart: unless-stopped
+    ports:
+      - "3003:3003"
+

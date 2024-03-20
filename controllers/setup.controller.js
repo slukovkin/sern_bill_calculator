@@ -31,8 +31,7 @@ export const getPriceFromDatabase = async (req, res) => {
     res.json(
       {
         message: "Ошибка запроса данных",
-      },
-      err
+      }
     )
   }
 }
@@ -40,20 +39,20 @@ export const getLastSettingFromDatabase = async (req, res) => {
   try {
     const data = await SetupBase.findAll()
     const id = searchMaxId(data)
-    console.log(id)
-    const lastSetting = await SetupBase.findOne({ where: id })
-    if (!lastSetting) {
-      return res.json({
-        message: "Данные не найдены",
-      })
+    if (id) {
+      const lastSetting = await SetupBase.findOne({ where: id })
+      if (!lastSetting) {
+        return res.json({
+          message: "Данные не найдены",
+        })
+      }
+      res.json(lastSetting)
     }
-    res.json(lastSetting)
   } catch (err) {
-    res.status(400).json(
+    res.json(
       {
-        message: "Ошибка запроса данных",
-      },
-      err
+        message: "Ошибка запроса данных"
+      }
     )
   }
 }

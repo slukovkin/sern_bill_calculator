@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import "./Report.module.css"
 import { months } from "../../data/data.js"
+import { getCurrentDate } from "../utils/currentDate.js"
 
 function Report(props) {
   const [electro, setElectro] = useState([])

@@ -2,5 +2,4 @@ node_modules
 config
 client
 demo_shots
-db_app.sqlite
 help.txt

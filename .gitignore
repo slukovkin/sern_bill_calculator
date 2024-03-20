@@ -1,6 +1,5 @@
 node_modules
 .env
-db_app.sqlite
 test.sqlite
 <<<<<<< HEAD
 client/build

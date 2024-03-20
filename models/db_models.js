@@ -6,15 +6,15 @@ export const SetupBase = sequelize.define(
   {
     eprice: {
       type: DataTypes.FLOAT,
-      allowNull: true,
+      default: 0
     },
     wprice: {
       type: DataTypes.FLOAT,
-      allowNull: true,
+      default: 0
     },
     gprice: {
       type: DataTypes.FLOAT,
-      allowNull: true,
+      default: 0
     },
   },
   {
@@ -29,15 +29,15 @@ export const ElectroCounter = sequelize.define(
   {
     counterPrev: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      default: 0
     },
     counterCurr: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      default: 0
     },
     payment: {
       type: DataTypes.FLOAT,
-      allowNull: true,
+      default: 0
     },
   },
   {
@@ -52,15 +52,15 @@ export const WaterCounter = sequelize.define(
   {
     counterPrev: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      default: 0
     },
     counterCurr: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      default: 0
     },
     payment: {
       type: DataTypes.FLOAT,
-      allowNull: true,
+      default: 0
     },
   },
   {
@@ -75,15 +75,15 @@ export const GazCounter = sequelize.define(
   {
     counterPrev: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      default: 0
     },
     counterCurr: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      default: 0
     },
     payment: {
       type: DataTypes.FLOAT,
-      allowNull: true,
+      default: 0
     },
   },
   {
